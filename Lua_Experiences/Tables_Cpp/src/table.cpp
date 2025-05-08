@@ -26,7 +26,7 @@ auto check(lua_State *L, int result) -> bool {
 auto addRecord(lua_State *L, std::string name, std::vector<std::string> links,
                std::string date) -> bool {
   // Function in Lua script
-  lua_getglobal(L, "addRecord");
+  lua_getglobal(L, "AddRecord");
   if (!lua_isfunction(L, -1)) {
     lua_pop(L, 1);
     return false;
@@ -58,10 +58,10 @@ auto getRecord(lua_State *L, int index) -> std::string {
   // Data Structure
   Record record;
   // Function in Lua script
-  lua_getglobal(L, "getRecord");
+  lua_getglobal(L, "GetRecord");
   if (!lua_isfunction(L, -1)) {
     lua_pop(L, 1);
-    return "Error reading record using 'getRecord' function!";
+    return "Error reading record using 'GetRecord' function!";
   }
   // Argument on the stack
   lua_pushinteger(L, index);
@@ -101,7 +101,7 @@ auto getRecord(lua_State *L, int index) -> std::string {
 auto summary(lua_State *L) -> std::string {
   std::string text;
   // Function in Lua script
-  lua_getglobal(L, "summary");
+  lua_getglobal(L, "Summary");
   if (!lua_isfunction(L, -1)) {
     lua_pop(L, 1);
     return "Error reading record using 'summary' function!";

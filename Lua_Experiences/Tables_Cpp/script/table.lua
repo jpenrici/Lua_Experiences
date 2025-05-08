@@ -18,7 +18,7 @@ Parameters:
 Returns:
   true if the record was added successfully, false otherwise.
 --]]
-function addRecord(name, links, date)
+function AddRecord(name, links, date)
   -- Check 'Name'
   if type(name) ~= "string" then
     return false, "Error: Inválid type for 'Name'!"
@@ -77,7 +77,7 @@ Parameters:
 Returns:
   The record table at the specified index, or nil if the index is invalid.
 --]]
-function getRecord(index)
+function GetRecord(index)
   if index < 1 or index > #records then
     return nil
   end
@@ -90,10 +90,10 @@ Generates a string representation of all records in the 'records' table.
 Returns:
   A formatted string containing the details of each record.
 --]]
-function summary()
+function Summary()
   local output = "{\n"
   for i = 1, #records do
-    local rec = getRecord(i)
+    local rec = GetRecord(i)
     if rec then
       output = output .. "[" .. i .. "]\n"
       output = output .. "  Name: " .. rec.Name .. "\n"
@@ -105,19 +105,20 @@ function summary()
   return output
 end
 
-
-function test()
+-- Test in Lua interpreter.
+local function test()
   print("Test ...")
-  print(addRecord("01", {"link", "link"}, "01-05-2025")) -- OK
-  print(addRecord("02", {"link", "link"}, "01-01-2025")) -- OK
-  print(addRecord("03", "is not table", "02-05-2025"))   -- Error 'Links'
-  print(addRecord("04", {"link", 10}, "01-01-2025"))     -- Error 'Links'   
-  print(addRecord("05", {}, "2025-05-03"))               -- Error 'Date'
-  print(addRecord("06", {"link"}, "05/05/2025"))         -- Error 'Date'
-  print(addRecord("07", {"link"}, "05-05-25"))           -- Error 'Date'
-  print(addRecord("08", {"link"}, "01-13-2025"))         -- Error 'Date'
-  print(addRecord("09", {"link"}, "31-02-2025"))         -- Error 'Date'
-  print(summary()) -- Call the sumary function to print its output
+  print(AddRecord("01", {"link", "link"}, "01-05-2025")) -- OK
+  print(AddRecord("02", {"link", "link"}, "01-01-2025")) -- OK
+  print(AddRecord("03", "is not table", "02-05-2025"))   -- Error 'Links'
+  print(AddRecord("04", {"link", 10}, "01-01-2025"))     -- Error 'Links'   
+  print(AddRecord("05", {}, "2025-05-03"))               -- Error 'Date'
+  print(AddRecord("06", {"link"}, "05/05/2025"))         -- Error 'Date'
+  print(AddRecord("07", {"link"}, "05-05-25"))           -- Error 'Date'
+  print(AddRecord("08", {"link"}, "01-13-2025"))         -- Error 'Date'
+  print(AddRecord("09", {"link"}, "31-02-2025"))         -- Error 'Date'
+  print(Summary()) -- Call the sumary function to print its output
 end
 
+-- Leave commented if used in C++ integration.
 -- test()

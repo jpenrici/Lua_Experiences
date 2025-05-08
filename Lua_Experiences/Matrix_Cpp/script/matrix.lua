@@ -80,7 +80,7 @@ local function str_to_matrix2D(str, delimiter, rows, columns)
 end
 
 -- For integration with C++
-function convert(str, delimiter, rows, columns)
+function Convert(str, delimiter, rows, columns)
   local matrix, message = str_to_matrix2D(str, delimiter, rows, columns)
   if matrix == nil then
     -- Return String
@@ -94,13 +94,13 @@ end
 local function test()
   print("Test ...")
   local str = "0;1;2;3;4;5;6;7;8;9;10;11"
-  print(convert(str, ";", 1, 12))
-  print(convert(str, ";", 2, 6))
-  print(convert(str, ";", 3, 4))
-  print(convert(str, ";", 4, 3))
-  print(convert(str, ",", 4, 3))    -- Check if the delimiter is correct!
-  print(convert(str, ";", -1, -1))  -- Invalid array dimensions!
-  print(convert("", ";", 4, 3))     -- Empty 'str' or 'delimiter' parameters!
+  print(Convert(str, ";", 1, 12))
+  print(Convert(str, ";", 2, 6))
+  print(Convert(str, ";", 3, 4))
+  print(Convert(str, ";", 4, 3))
+  print(Convert(str, ",", 4, 3))    -- Check if the delimiter is correct!
+  print(Convert(str, ";", -1, -1))  -- Invalid array dimensions!
+  print(Convert("", ";", 4, 3))     -- Empty 'str' or 'delimiter' parameters!
 end
 
 -- Leave commented if used in C++ integration.

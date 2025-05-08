@@ -1,7 +1,7 @@
 -- helloWorld.lua
 
 -- Simple function for testing.
-function calc(num1, num2, operador)
+function Calc(num1, num2, operador)
   if operador == "+" then
     return num1 + num2
   elseif operador == "-" then

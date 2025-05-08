@@ -3,9 +3,7 @@
 #include <print>
 
 extern "C" {
-#include "lua5.4/lauxlib.h"
-#include "lua5.4/lua.h"
-#include "lua5.4/lualib.h"
+#include "lua5.4/lua.hpp"
 }
 
 void helloWorld() {
@@ -30,14 +28,14 @@ void helloWorld() {
   std::string oper = "/";
 
   if (check(L, luaL_dofile(L, script.c_str()))) {
-    lua_getglobal(L, "calc");
+    lua_getglobal(L, "Calc");
     if (lua_isfunction(L, -1)) {
       lua_pushnumber(L, num1);
       lua_pushnumber(L, num2);
       lua_pushstring(L, oper.c_str());
       if (check(L, lua_pcall(L, 3, 1, 0))) {
         auto result = lua_tostring(L, -1);
-        std::println("calc ({}, {}, {}) = {}", num1, num2, oper, result);
+        std::println("Calc ({}, {}, {}) = {}", num1, num2, oper, result);
       }
     }
   }
